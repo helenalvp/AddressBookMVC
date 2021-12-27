@@ -1,3 +1,4 @@
+using AddressBook.Data;
 using AddressBookMVC.Data;
 using AddressBookMVC.Services;
 using AddressBookMVC.Services.Interfaces;
@@ -28,7 +29,7 @@ namespace AddressBookMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDBContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(DataUtility.GetConnectionString(Configuration)));
 
             services.AddScoped<IImageService, BasicImageService>();
             services.AddControllersWithViews();
